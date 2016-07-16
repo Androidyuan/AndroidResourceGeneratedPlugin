@@ -1,0 +1,39 @@
+<idea-plugin version="4">
+  <id>com.eddyyuan.plugin.android.AndroidResourceGenerated</id>
+  <name>Generate Android Resource</name>
+  <version>1.0</version>
+  <vendor email="eddyyuan_qqmusic@qq.com">eddyyuan (袁聪)</vendor>
+
+  <description><![CDATA[
+      A quick way to help you extract an existing Java or XML string/demin/color etc to a resource.<br>
+      <br>
+      You just write like "@string/example/exmpleVaule" in Java or Layout , the words will be replaced by "xxx.getResource().getString(R.string.example)" in Java or "@string/example" in Layout and <string name="example">exampleValue</string>  will be generated in strings.xml.<br>
+    ]]></description>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="141.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <projectConfigurable instance="com.eddyyuan.android.AndroidResourceGeneratedConfigure"></projectConfigurable>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="AndroidResourceGenerated" class="com.eddyyuan.android.AndroidResourceGeneratedAction"
+            text="Generate Android Resource">
+      <keyboard-shortcut first-keystroke="shift alt A" keymap="$default"/>
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+    </action>
+  </actions>
+
+  <project-components>
+
+  </project-components>
+</idea-plugin>
