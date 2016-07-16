@@ -29,3 +29,7 @@ A plugin help you to extract string resource easily
 ![myPlugin6](readme/plugin8.png)
 
 除此之外，插件还能自动检测是否是重复的string命名，用形如"@string-800x480/example/exampleValue"可以在values-800x480文件夹下面的strings.xml中生成对应的item，当然，前提是vaules-800x480文件夹下面strings.xml存在。
+
+###获取插件
+
+可以通过Android Studio/Intellij Idea直接搜索Generate Android Resource或者手动下载后安装[插件下载地址](https://plugins.jetbrains.com/plugin/8429?pr=idea)
