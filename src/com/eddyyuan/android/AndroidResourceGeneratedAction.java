@@ -1,7 +1,6 @@
 package com.eddyyuan.android;
 
 import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.lang.xml.XMLLanguage;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -16,9 +15,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.*;
 import com.intellij.psi.impl.source.tree.ElementType;
-import com.intellij.psi.impl.source.xml.XmlFileImpl;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.xml.*;
 import org.apache.http.util.TextUtils;
 import org.jetbrains.annotations.NotNull;
@@ -225,32 +224,35 @@ public class AndroidResourceGeneratedAction extends AnAction {
                         XmlTag tagFromText = XmlElementFactory.getInstance(project).createTagFromText(builder);
 
                         XmlTag rootTag = ((XmlFile) file).getRootTag();
-                        PsiElement whiteSpace = rootTag.getChildren()[rootTag.getChildren().length - 4];
-                        PsiElement comment = findCommentByText(whiteSpace, psiFile.getName());
-
+                        if(rootTag == null){
+                            return;
+                        }
+                        PsiElement whiteSpace = PsiTreeUtil.getChildOfType(XmlElementFactory.getInstance(project).createTagFromText("<eddyyuan>\n</eddyyuan>"), XmlText.class);
+                        PsiElement[] children = rootTag.getChildren();
+                        PsiElement comment = null;
+                        if(children != null && children.length >= 6) {
+                            comment = findCommentByText(rootTag.getChildren()[rootTag.getChildren().length - 4], psiFile.getName());
+                        }
                         if(comment == null){
                             StringBuilder commentBuilder = new StringBuilder();
-                            commentBuilder.append("<!-- ");
+                            commentBuilder.append("<eddyyuan><!-- ");
                             commentBuilder.append(psiFile.getName());
-                            commentBuilder.append(" --> ");
+                            commentBuilder.append(" --></eddyyuan>");
 
-                            PsiFile fileFromText = PsiFileFactory.getInstance(project).createFileFromText("comment.xml", XMLLanguage.INSTANCE, commentBuilder);
+                            PsiElement commentElement = PsiTreeUtil.getChildOfType(XmlElementFactory.getInstance(project).createTagFromText(commentBuilder), XmlComment.class);
 
-                            PsiElement commentElement = ((XmlFileImpl) fileFromText).getDocument().getChildren()[0];
-
-                            rootTag.add(whiteSpace.copy());
+                            rootTag.add(whiteSpace);
                             rootTag.add(commentElement);
-                            rootTag.add(whiteSpace.copy());
+                            rootTag.add(whiteSpace);
                             rootTag.add(tagFromText);
-                            rootTag.add(whiteSpace.copy());
-                            rootTag.add(whiteSpace.copy());
+                            rootTag.add(whiteSpace);
                             rootTag.add(commentElement);
-                            rootTag.add(whiteSpace.copy());
+                            rootTag.add(whiteSpace);
                         }else{
                             if(comment.getPrevSibling() instanceof XmlText) {
                                 rootTag.addBefore(tagFromText, comment.getPrevSibling());
                             }else{
-                                rootTag.addBefore(whiteSpace.copy(), comment);
+                                rootTag.addBefore(whiteSpace, comment);
                                 rootTag.addBefore(tagFromText, comment.getPrevSibling());
                             }
                         }
