@@ -5,7 +5,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 /**
- * Created by yuancong on 16/6/13.
+ * Created by eddyyuan on 16/6/13.
  */
 public class AndroidResourceGeneratedConfiguration {
     private JPanel mPanel;

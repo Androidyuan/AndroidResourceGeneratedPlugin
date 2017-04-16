@@ -1,7 +1,7 @@
 # AndroidResourceGeneratedPlugin
 A plugin help you to extract string resource easily
 
-###插件说明
+### 插件说明
 插件需要在JDK8以上才能安装使用，否则会报错。安装以后只要按照"@(类型)/(名字)/(值)"这样的形式写代码，就可以快速在类型文件中生成一个item。
 
 ![myPlugin](readme/plugin2.png)
@@ -30,6 +30,6 @@ A plugin help you to extract string resource easily
 
 除此之外，插件还能自动检测是否是重复的string命名，用形如"@string-800x480/example/exampleValue"可以在values-800x480文件夹下面的strings.xml中生成对应的item，当然，前提是vaules-800x480文件夹下面strings.xml存在。
 
-###获取插件
+### 获取插件
 
 可以通过Android Studio/Intellij Idea直接搜索Generate Android Resource或者手动下载后安装[插件下载地址](https://plugins.jetbrains.com/plugin/8429?pr=idea)

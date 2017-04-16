@@ -69,7 +69,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <text value=".getResources().getString(R.string.xxx);&#10;.getResources().getDimension(R.dimen.xxx);&#10;.getResources().getColor(R.color.xxx);"/>
+                  <text value=".getResources().getString(R.string.xxx); .getResources().getDimension(R.dimen.xxx);&#10;.getResources().getColor(R.color.xxx);"/>
                 </properties>
               </component>
             </children>
@@ -79,7 +79,7 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Tips: The global Application object is recommend, don't use activity object that may cause NullPointerException."/>
+              <text value="Tips: The global Application object is recommended, don't use activity object that may cause NullPointerException."/>
             </properties>
           </component>
         </children>

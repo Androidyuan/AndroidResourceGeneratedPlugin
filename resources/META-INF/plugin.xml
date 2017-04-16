@@ -1,13 +1,13 @@
 <idea-plugin version="4">
   <id>com.eddyyuan.plugin.android.AndroidResourceGenerated</id>
   <name>Generate Android Resource</name>
-  <version>1.0</version>
-  <vendor email="eddyyuan_qqmusic@qq.com">eddyyuan (袁聪)</vendor>
+  <version>1.2</version>
+  <vendor email="eddyyuan_qqmusic@qq.com" url="https://github.com/Androidyuan/AndroidResourceGeneratedPlugin">eddyyuan (袁聪)</vendor>
 
   <description><![CDATA[
       A quick way to help you extract an existing Java or XML string/demin/color etc to a resource.<br>
       <br>
-      You just write like "@string/example/exmpleVaule" in Java or Layout , the words will be replaced by "xxx.getResource().getString(R.string.example)" in Java or "@string/example" in Layout and <string name="example">exampleValue</string>  will be generated in strings.xml.<br>
+      You just write like "@string/example/exmpleVaule" in Java or Layout , the words will be replaced by "xxx.getResource().getString(R.string.example)" in Java or "@string/example" in Layout and "&lt;string name="example"&gt;exampleValue&lt;/string&gt;" will be generated in strings.xml.<br>
     ]]></description>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
@@ -26,7 +26,7 @@
 
   <actions>
     <!-- Add your actions here -->
-    <action id="AndroidResourceGenerated" class="com.eddyyuan.android.AndroidResourceGeneratedAction"
+    <action id="AndroidResourceGenerated" class="com.eddyyuan.android.action.AndroidResourceGeneratedAction"
             text="Generate Android Resource">
       <keyboard-shortcut first-keystroke="shift alt A" keymap="$default"/>
       <add-to-group group-id="EditorPopupMenu" anchor="first"/>

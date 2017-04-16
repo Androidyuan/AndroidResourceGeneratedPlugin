@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 
 /**
- * Created by yuancong on 16/6/9.
+ * Created by eddyyuan on 16/6/9.
  */
 public class AndroidResourceGeneratedConfigure implements Configurable {
 
